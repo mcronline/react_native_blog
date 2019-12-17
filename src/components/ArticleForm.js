@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-const IndexScreen = ({ title, content, onSubmit }) => {
+const ArticleForm = ({ title, content, onSubmit }) => {
 
     const { title, setTitle } = useState('');
     const { content, setContent } = useState('');
@@ -32,4 +32,4 @@ const style = StyleSheet.create({
 
 });
 
-export default IndexScreen;
+export default ArticleForm;
