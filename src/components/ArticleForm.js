@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-const ArticleForm = ({ title, content, onSubmit }) => {
+const ArticleForm = (props) => {
 
-    const { title, setTitle } = useState('');
-    const { content, setContent } = useState('');
+    const { title, setTitle } = useState(props.title);
+    const { content, setContent } = useState(props.content);
 
     return(
         <View>
