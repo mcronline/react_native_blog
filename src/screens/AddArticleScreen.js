@@ -1,13 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import ArticleForm from '../components/ArticleForm';
-import { AddArticle } from '../actions';
+import { addArticle } from '../actions';
+import { useDispatch } from 'react-redux';
 
 const AddArticleScreen = () => {
 
+    const dispatch = useDispatch();
+
     return(
         <View>
-            <ArticleForm onSubmit={(title, content) => AddArticle(title, content)}/>
+            <ArticleForm onSubmit={(title, content) => dispatch(addArticle({title, content}))}/>
         </View>
     );
 }

@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import { useDispatch } from 'react-redux';
-import ArticleScreen from '../screens/ArticleScreen';
 
 const ArticleForm = ({initialValues , onSubmit}) => {
 
-    const { title, setTitle } = useState(initialValues.title);
-    const { content, setContent } = useState(initialValues.content);
-    const dispatch = useDispatch();
-
+    const [ title, setTitle ] = useState(initialValues.title);
+    const [ content, setContent ] = useState(initialValues.content);
+    
     return(
         <View style={style.inputArea}>
             <View>
@@ -17,19 +14,19 @@ const ArticleForm = ({initialValues , onSubmit}) => {
                     style={style.input}
                     value={title}
                     placeholder="Title"
-                    onChangeText={setTitle}
+                    onChangeText={text => setTitle(text)}
                 />
                 <Text style={style.label}>Content</Text>
                 <TextInput
                     style={style.input}
                     value={content}
                     placeholder="Content"
-                    onChangeText={setContent}
+                    onChangeText={text => setContent(text)}
                 />
             </View>
             <Button
                 title="Save Article"
-                onPress={() => dispatch(onSubmit({title,content}))}
+                onPress={() => onSubmit(title,content)}
             />
         </View>
     );

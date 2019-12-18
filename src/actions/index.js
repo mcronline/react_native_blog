@@ -8,7 +8,7 @@ import {
 export const addArticle = (data) => {
 
     const id = Math.floor(Math.random() * 99999);
-
+    
     return({
         type : ADD_ARTICLE,
         payload : { id, ...data }
