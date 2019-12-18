@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
+import ArticleScreen from '../screens/ArticleScreen';
 
-const ArticleForm = ({initialvalues = {title : '', content : ''}, onSubmit}) => {
+const ArticleForm = ({initialValues , onSubmit}) => {
 
-    const { title, setTitle } = useState(initialvalues.title);
-    const { content, setContent } = useState(initialvalues.content);
+    const { title, setTitle } = useState(initialValues.title);
+    const { content, setContent } = useState(initialValues.content);
     const dispatch = useDispatch();
 
     return(
@@ -32,6 +33,13 @@ const ArticleForm = ({initialvalues = {title : '', content : ''}, onSubmit}) => 
             />
         </View>
     );
+}
+
+ArticleForm.defaultProps = {
+    initialValues : {
+        title : '',
+        content : ''
+    }
 }
 
 const style = StyleSheet.create({
