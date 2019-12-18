@@ -6,7 +6,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import IndexScreen from './src/screens/IndexScreen';
 
-const navigation = createStackNavigator({
+const rootStack = createStackNavigator({
     Index : IndexScreen
 },{
     initialRouteName : 'Index',
@@ -15,10 +15,14 @@ const navigation = createStackNavigator({
     }
 })
 
+const Navigation = createAppContainer(rootStack);
+
 const store = createStore(reducer);
 
-const Navigation = createAppContainer(navigation);
-
-export default <Provider store={store}>
-    <Navigation />
-</Provider>
+export default () => {
+    return (
+        <Provider store={store}>
+            <Navigation />
+        </Provider>
+    )
+}
