@@ -5,9 +5,11 @@ import reducer from './src/reducers';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import IndexScreen from './src/screens/IndexScreen';
+import ArticleScreen from './src/screens/ArticleScreen';
 
 const rootStack = createStackNavigator({
-    Index : IndexScreen
+    Index : IndexScreen,
+    ShowArticle : ArticleScreen
 },{
     initialRouteName : 'Index',
     defaultNavigationOptions : {

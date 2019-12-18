@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import { addArticle } from '../actions';
 
 
-const IndexScreen = () => {
+const IndexScreen = ({ navigation }) => {
 
     const articles = useSelector( state => state.blog );
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const IndexScreen = () => {
                 keyExtractor={(article) => 'article-'+article.id}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('ShowArticle')}>
                             <View style={style.row}>
                                 <Text style={style.title}>{item.title}</Text>
                                 <Feather name="trash" style={style.icon} />
