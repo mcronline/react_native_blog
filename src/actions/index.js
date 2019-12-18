@@ -5,28 +5,20 @@ import {
     FETCH_ARTICLE
 } from './types';
 
-export const addArticle = ({title, content}) => dispatch => {
+export const addArticle = (data) => dispatch => {
 
-    const id = Math.floor(Math.random * 99999) + 99999;
+    const id = Math.floor(Math.random() * 99999);
 
     dispatch({
         type : ADD_ARTICLE,
-        payload : {
-            id,
-            title,
-            content
-        }
+        payload : { id, ...data }
     });
 }
 
-export const editArticle = ({id, title, content}) => {
+export const editArticle = (data) => dispatch => {
 
     dispatch({
         type : EDIT_ARTICLE,
-        payload : {
-            id,
-            title,
-            content
-        }
+        payload : data
     });
 }
