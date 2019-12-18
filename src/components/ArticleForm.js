@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 
-const ArticleForm = (props) => {
+const ArticleForm = ({initialvalues = {title : '', content : ''}, onSubmit}) => {
 
-    const { title, setTitle } = useState(props.title);
-    const { content, setContent } = useState(props.content);
+    const { title, setTitle } = useState(initialvalues.title);
+    const { content, setContent } = useState(initialvalues.content);
     const dispatch = useDispatch();
 
     return(

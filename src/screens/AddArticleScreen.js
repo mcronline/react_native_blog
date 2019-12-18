@@ -7,7 +7,7 @@ const AddArticleScreen = () => {
 
     return(
         <View>
-            <ArticleForm title="" content="" onSubmit={AddArticle}/>
+            <ArticleForm onSubmit={(title, content) => AddArticle(title, content)}/>
         </View>
     );
 }
