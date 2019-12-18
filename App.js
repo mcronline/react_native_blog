@@ -6,10 +6,12 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import IndexScreen from './src/screens/IndexScreen';
 import ArticleScreen from './src/screens/ArticleScreen';
+import AddArticleScreen from './src/screens/AddArticleScreen';
 
 const rootStack = createStackNavigator({
     Index : IndexScreen,
-    ShowArticle : ArticleScreen
+    ShowArticle : ArticleScreen,
+    AddArticle : AddArticleScreen
 },{
     initialRouteName : 'Index',
     defaultNavigationOptions : {

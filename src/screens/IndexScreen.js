@@ -39,6 +39,15 @@ const IndexScreen = ({ navigation }) => {
     );
 }
 
+IndexScreen.navigationOptions = () => {
+
+    return {
+        HeaderRight : <TouchableOpacity onPress={() => navigation.navigate('AddArticle')}>
+                <Feather name="plus" size={30} style={{marginRight : 15}} />
+            </TouchableOpacity>
+    };
+}
+
 const style = StyleSheet.create({
     row : {
         flexDirection : 'row',
