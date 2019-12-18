@@ -11,14 +11,14 @@ const blogReducer = (state=[], action) => {
     switch(action.type) {
 
         case ADD_ARTICLE:
-            return [...state, action.payload]
+            return [...state, action.payload];
 
         case EDIT_ARTICLE:
             return state.map((article) => {
                 if(article.id === action.payload.id)
                     return action.payload;
                 else
-                    return article
+                    return article;
             });
     }
 }
