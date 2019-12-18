@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const EditArticleScreen = ({ navigation }) => {
 
-    const id = navigation.getParams('id');
+    const id = navigation.getParam('id');
 
     const article = useSelector((state) => state.blog.find((item) => item.id === id))
     const dispatch = useDispatch();
