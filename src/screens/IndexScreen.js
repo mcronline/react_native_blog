@@ -26,7 +26,7 @@ const IndexScreen = ({ navigation }) => {
                 keyExtractor={(article) => 'article-'+article.id}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity onPress={() => navigation.navigate('ShowArticle')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ShowArticle', {id : item.id})}>
                             <View style={style.row}>
                                 <Text style={style.title}>{item.title}</Text>
                                 <Feather name="trash" style={style.icon} />
