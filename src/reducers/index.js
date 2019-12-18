@@ -7,7 +7,7 @@ import {
 } from '../actions/types';
 
 const blogReducer = (state=[], action) => {
-
+    
     switch(action.type) {
 
         case ADD_ARTICLE:
@@ -20,6 +20,9 @@ const blogReducer = (state=[], action) => {
                 else
                     return article;
             });
+
+        default:
+            return state;
     }
 }
 
