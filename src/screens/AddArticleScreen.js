@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import ArticleForm from '../components/ArticleForm';
+import { AddArticle } from '../actions';
 
 const AddArticleScreen = () => {
 
     return(
         <View>
-            <ArticleForm />
+            <ArticleForm title="" content="" onSubmit={AddArticle}/>
         </View>
     );
 }
