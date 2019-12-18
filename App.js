@@ -7,11 +7,13 @@ import { createStackNavigator } from 'react-navigation-stack';
 import IndexScreen from './src/screens/IndexScreen';
 import ArticleScreen from './src/screens/ArticleScreen';
 import AddArticleScreen from './src/screens/AddArticleScreen';
+import EditArticleScreen from './src/screens/EditArticleScreen';
 
 const rootStack = createStackNavigator({
     Index : IndexScreen,
     ShowArticle : ArticleScreen,
-    AddArticle : AddArticleScreen
+    AddArticle : AddArticleScreen,
+    EditArticle : EditArticleScreen
 },{
     initialRouteName : 'Index',
     defaultNavigationOptions : {
