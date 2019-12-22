@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import {
     ADD_ARTICLE,
     EDIT_ARTICLE,
+    DELETE_ARTICLE,
     FETCH_ARTICLES,
     FETCH_ARTICLE
 } from '../actions/types';
@@ -20,6 +21,9 @@ const blogReducer = (state=[], action) => {
                 else
                     return article;
             });
+
+        case DELETE_ARTICLE:
+            return state.filter((article) => article.id !== action.payload.id);
 
         default:
             return state;
