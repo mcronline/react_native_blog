@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { Feather } from '@expo/vector-icons';
-import { addArticle } from '../actions';
+import { addArticle, deleteArticle } from '../actions';
 
 
 const IndexScreen = ({ navigation }) => {
@@ -27,10 +27,7 @@ const IndexScreen = ({ navigation }) => {
                 renderItem={({ item }) => {
                     return (
                         <TouchableOpacity onPress={() => navigation.navigate('ShowArticle', {id : item.id})}>
-                            <View style={style.row}>
-                                <Text style={style.title}>{item.title}</Text>
-                                <Feather name="trash" style={style.icon} />
-                            </View>
+                            
                         </TouchableOpacity>
                     );
                 }}
@@ -49,19 +46,7 @@ IndexScreen.navigationOptions = ({ navigation }) => {
 }
 
 const style = StyleSheet.create({
-    row : {
-        flexDirection : 'row',
-        justifyContent : 'space-between',
-        padding : 15,
-        borderBottomColor: '#CCC',
-        borderBottomWidth: 1
-    },
-    title : {
-        fontSize : 18
-    },
-    icon : {
-        fontSize : 24
-    }
+    
 });
 
 export default IndexScreen;
