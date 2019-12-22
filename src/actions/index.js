@@ -6,7 +6,7 @@ import {
     FETCH_ARTICLE
 } from './types';
 
-export const addArticle = (data) => {
+export const addArticle = (data, callback) => {
 
     const id = Math.floor(Math.random() * 99999);
     
@@ -25,7 +25,7 @@ export const editArticle = (data) => {
 }
 
 export const deleteArticle = (id) => {
-
+    callback();
     return ({
         type : DELETE_ARTICLE,
         payload : id
