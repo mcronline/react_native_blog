@@ -3,6 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native
 import { useSelector, useDispatch } from 'react-redux';
 import { Feather } from '@expo/vector-icons';
 import { addArticle, deleteArticle } from '../actions';
+import ArticleRow from '../components/ArticleRow';
 
 
 const IndexScreen = ({ navigation }) => {
@@ -27,7 +28,11 @@ const IndexScreen = ({ navigation }) => {
                 renderItem={({ item }) => {
                     return (
                         <TouchableOpacity onPress={() => navigation.navigate('ShowArticle', {id : item.id})}>
-                            
+                            <ArticleRow
+                                onDelete={() => dispatch(deleteArticle(item.id, navigation.navigate('Index')))}
+                                id={item.id}
+                                title={item.title}
+                        />
                         </TouchableOpacity>
                     );
                 }}
