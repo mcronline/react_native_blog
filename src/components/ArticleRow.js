@@ -1,12 +1,30 @@
-import React from 'react'
-import { View, Text, StyleSheet} from 'react-native';
+import React, { useState } from 'react'
+import { View, Text, TouchableOpacity, StyleSheet, Alert} from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
-const ArticleRow = (props) => {
+const ArticleRow = ({ onDelete, id, title }) => {
+
+    const [ deleteIcon, setDeleteIcon ] = useState('trash');
+
+    const deleteArticle = () => {
+        setDeleteIcon('loader');
+
+        Alert.alert(
+            'Delete Article',
+            `Are you sure you want to delete article ${id}?`,
+            [
+                {text : 'Cancel', onPress : () => setDeleteIcon('trash')},
+                {text : 'Delete', onPress : () => onDelete() }
+            ]
+        )
+    }
 
     return(
         <View style={style.row}>
-            <Text style={style.title}>{item.title}</Text>
-            <Feather name="trash" style={style.icon} />
+            <Text style={style.title}>{title}</Text>
+            <TouchableOpacity onPress={() => deleteArticle()}>
+                <Feather name={deleteIcon} style={style.icon} />
+            </TouchableOpacity>
         </View>
     );
 }
