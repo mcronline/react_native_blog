@@ -1,6 +1,7 @@
 import {
     ADD_ARTICLE,
     EDIT_ARTICLE,
+    DELETE_ARTICLE,
     FETCH_ARTICLES,
     FETCH_ARTICLE
 } from './types';
@@ -21,4 +22,12 @@ export const editArticle = (data) => {
         type : EDIT_ARTICLE,
         payload : data
     });
+}
+
+export const deleteArticle = (id) => {
+
+    return ({
+        type : DELETE_ARTICLE,
+        payload : id
+    })
 }
