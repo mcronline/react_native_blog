@@ -30,7 +30,7 @@ const IndexScreen = ({ navigation }) => {
                         <TouchableOpacity onPress={() => navigation.navigate('ShowArticle', {id : item.id})}>
                             <ArticleRow
                                 onDelete={() => dispatch(deleteArticle(item.id, navigation.navigate('Index')))}
-                                id={item.id}
+                                id={item.id} 
                                 title={item.title}
                         />
                         </TouchableOpacity>
