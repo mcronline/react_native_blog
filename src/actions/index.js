@@ -16,7 +16,7 @@ export const addArticle = (data, callback) => {
     });
 }
 
-export const editArticle = (data) => {
+export const editArticle = (data, callback) => {
 
     return({
         type : EDIT_ARTICLE,
@@ -24,7 +24,7 @@ export const editArticle = (data) => {
     });
 }
 
-export const deleteArticle = (id) => {
+export const deleteArticle = (id, callback) => {
     callback();
     return ({
         type : DELETE_ARTICLE,
