@@ -6,10 +6,14 @@ import {
     FETCH_ARTICLES,
     FETCH_ARTICLE
 } from '../actions/types';
+import AlertError from '../components/AlertError';
 
 const blogReducer = (state=[], action) => {
     
     switch(action.type) {
+
+        case FETCH_ARTICLES:
+            return action.payload;
 
         case ADD_ARTICLE:
             return [...state, action.payload];
@@ -25,6 +29,10 @@ const blogReducer = (state=[], action) => {
         case DELETE_ARTICLE:
             return state.filter((article) => article.id !== action.payload);
 
+        case ERROR:
+            if(!action.payload) action.payload = "Ocorreu um erro desconhecido";
+            <AlertError message={action.payload} />
+            
         default:
             return state;
     }

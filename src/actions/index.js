@@ -5,19 +5,43 @@ import {
     FETCH_ARTICLES,
     FETCH_ARTICLE
 } from './types';
+import jsonServer from '../api/jsonServer';
 
-export const addArticle = (data, callback) => {
+export const fetchArticles = () => async dispatch => {
+    try{
+        const response = await jsonServer.get('/blogposts');
+        dispatch({
+            type : FETCH_ARTICLES,
+            payload : response.data
+        });
+    }catch(err){
+        dispatch({
+            type : ERROR,
+            payload : err.message
+        });
+    }
+}
+
+export const addArticle = (data, callback) => async dispatch => {
 
     const id = Math.floor(Math.random() * 99999);
-    
-    return({
-        type : ADD_ARTICLE,
-        payload : { id, ...data }
-    });
+    try{
+        const response = async () => jsonServer.post("/blogposts",{ id : id, ...data});
+        callback();
+        dispatch({
+            type : ADD_ARTICLE,
+            payload : { id, ...data }
+        });
+    }catch(err){
+        dispatch({
+            type : ADD_ARTICLE,
+            payload : { id, ...data }
+        });
+    }
 }
 
 export const editArticle = (data, callback) => {
-
+    callback();
     return({
         type : EDIT_ARTICLE,
         payload : data
