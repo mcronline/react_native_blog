@@ -4,7 +4,8 @@ import {
     EDIT_ARTICLE,
     DELETE_ARTICLE,
     FETCH_ARTICLES,
-    FETCH_ARTICLE
+    FETCH_ARTICLE,
+    ERROR
 } from '../actions/types';
 import AlertError from '../components/AlertError';
 
@@ -32,7 +33,7 @@ const blogReducer = (state=[], action) => {
         case ERROR:
             if(!action.payload) action.payload = "Ocorreu um erro desconhecido";
             <AlertError message={action.payload} />
-            
+
         default:
             return state;
     }

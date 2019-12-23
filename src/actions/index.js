@@ -3,7 +3,8 @@ import {
     EDIT_ARTICLE,
     DELETE_ARTICLE,
     FETCH_ARTICLES,
-    FETCH_ARTICLE
+    FETCH_ARTICLE,
+    ERROR
 } from './types';
 import jsonServer from '../api/jsonServer';
 
