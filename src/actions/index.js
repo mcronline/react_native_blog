@@ -30,11 +30,11 @@ export const addArticle = (data, callback) => async dispatch => {
     try{
         const response = async () => jsonServer.post("/blogposts",{ id : id, ...data});
         console.log("ADDED");
-        console.log(response);
+        console.log(data);
         callback();
         dispatch({
             type : ADD_ARTICLE,
-            payload : response.data
+            payload : data
         });
     }catch(err){
         console.log("ERROR ON ADD");
