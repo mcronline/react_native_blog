@@ -1,3 +1,4 @@
+import React from 'react';
 import { combineReducers } from 'redux';
 import {
     ADD_ARTICLE,
@@ -31,8 +32,7 @@ const blogReducer = (state=[], action) => {
             return state.filter((article) => article.id !== action.payload);
 
         case ERROR:
-            if(!action.payload) action.payload = "Ocorreu um erro desconhecido";
-            <AlertError message={action.payload} />
+            AlertError(action.payload);
 
         default:
             return state;

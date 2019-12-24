@@ -1,9 +1,9 @@
 import React from 'react';
 import { Alert } from 'react-native';
 
-const AlertError = ({ message }) => {
+export default message => {
 
-    return Alert.alert(
+    Alert.alert(
         'We got a problem...',
         message,
         [
@@ -11,6 +11,4 @@ const AlertError = ({ message }) => {
         ]
         
     );
-}
-
-export default AlertError;
+};

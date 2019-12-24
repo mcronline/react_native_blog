@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { Feather } from '@expo/vector-icons';
-import { addArticle, deleteArticle } from '../actions';
+import { fetchArticles, deleteArticle } from '../actions';
 import ArticleRow from '../components/ArticleRow';
 
 
@@ -10,12 +10,9 @@ const IndexScreen = ({ navigation }) => {
 
     const articles = useSelector( state => state.blog );
     const dispatch = useDispatch();
-
+    console.log(articles);
     useEffect(() => {
-        dispatch(addArticle({
-            title : "Post #1",
-            content : "This is the first post"
-        }));
+        dispatch(fetchArticles());
     },[]);
     
     if(articles.length <= 0) return <Text>No Articles</Text>;

@@ -12,7 +12,7 @@ const EditArticleScreen = ({ navigation }) => {
     const dispatch = useDispatch();
 
     return(
-        <ArticleForm initialValues={article} onSubmit={(title,content) => dispatch(editArticle({id, title, content}))} />
+        <ArticleForm initialValues={article} onSubmit={(title,content) => dispatch(editArticle({id, title, content}, () => navigation.pop()))} />
     );
 }
 

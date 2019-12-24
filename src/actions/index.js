@@ -7,6 +7,7 @@ import {
     ERROR
 } from './types';
 import jsonServer from '../api/jsonServer';
+import AlertError from '../components/AlertError';
 
 export const fetchArticles = () => async dispatch => {
     try{
@@ -24,19 +25,22 @@ export const fetchArticles = () => async dispatch => {
 }
 
 export const addArticle = (data, callback) => async dispatch => {
-
+    
     const id = Math.floor(Math.random() * 99999);
     try{
         const response = async () => jsonServer.post("/blogposts",{ id : id, ...data});
+        console.log("ADDED");
+        console.log(response);
         callback();
         dispatch({
             type : ADD_ARTICLE,
-            payload : { id, ...data }
+            payload : response.data
         });
     }catch(err){
+        console.log("ERROR ON ADD");
         dispatch({
-            type : ADD_ARTICLE,
-            payload : { id, ...data }
+            type : ERROR,
+            payload : err.message
         });
     }
 }

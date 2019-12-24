@@ -4,12 +4,12 @@ import ArticleForm from '../components/ArticleForm';
 import { addArticle } from '../actions';
 import { useDispatch } from 'react-redux';
 
-const AddArticleScreen = () => {
+const AddArticleScreen = ({ navigation }) => {
 
     const dispatch = useDispatch();
 
     return(
-        <ArticleForm onSubmit={(title, content) => dispatch(addArticle({title, content}))}/>
+        <ArticleForm onSubmit={(title, content) => dispatch(addArticle({title, content}, () => navigation.navigate('Index')))}/>
     );
 }
 
