@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -27,9 +27,23 @@ const Navigation = createAppContainer(rootStack);
 const store = createStore(reducer, applyMiddleware(thunk));
 
 export default () => {
+
+    const [ loading, setLoading ] = useState(false);
+    const BlogContext = React.createContext();
+
+    const value = {
+        setLoadingScreen : setLoading
+    }
+
     return (
+
         <Provider store={store}>
-            <Navigation />
+            <BlogContext.Provider value={value}>
+                <Navigation />
+            </BlogContext.Provider>
+            <Modal visible={loading}>
+                
+            </Modal>
         </Provider>
     )
 }
