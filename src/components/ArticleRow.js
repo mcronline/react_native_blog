@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Alert} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert, ActivityIndicator} from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-const ArticleRow = ({ onDelete, id, title }) => {
+const ArticleRow = ({ onDelete, title }) => {
 
     const [ deleteIcon, setDeleteIcon ] = useState('trash');
 
@@ -11,7 +11,7 @@ const ArticleRow = ({ onDelete, id, title }) => {
 
         Alert.alert(
             'Delete Article',
-            `Are you sure you want to delete article ${id}?`,
+            `Are you sure you want to delete article "${title}"?`,
             [
                 {text : 'Cancel', onPress : () => setDeleteIcon('trash')},
                 {text : 'Delete', onPress : () => onDelete() }
@@ -23,7 +23,10 @@ const ArticleRow = ({ onDelete, id, title }) => {
         <View style={style.row}>
             <Text style={style.title}>{title}</Text>
             <TouchableOpacity onPress={() => deleteArticle()}>
-                <Feather name={deleteIcon} style={style.icon} />
+                {deleteIcon === 'trash' ? 
+                    <Feather name={deleteIcon} style={style.icon} /> :
+                    <ActivityIndicator size="small" color="#000" />
+                }
             </TouchableOpacity>
         </View>
     );

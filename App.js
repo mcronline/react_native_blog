@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import { Provider } from 'react-redux';
+import React from 'react';
+
+import { Provider, useSelector } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './src/reducers';
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+
 import IndexScreen from './src/screens/IndexScreen';
 import ArticleScreen from './src/screens/ArticleScreen';
 import AddArticleScreen from './src/screens/AddArticleScreen';
 import EditArticleScreen from './src/screens/EditArticleScreen';
+
+import LoadingModal from './src/components/LoadingModal';
 
 const rootStack = createStackNavigator({
     Index : IndexScreen,
@@ -18,9 +23,9 @@ const rootStack = createStackNavigator({
 },{
     initialRouteName : 'Index',
     defaultNavigationOptions : {
-        title : 'Blogs'
+        title : 'Blog'
     }
-})
+});
 
 const Navigation = createAppContainer(rootStack);
 
@@ -28,22 +33,11 @@ const store = createStore(reducer, applyMiddleware(thunk));
 
 export default () => {
 
-    const [ loading, setLoading ] = useState(false);
-    const BlogContext = React.createContext();
-
-    const value = {
-        setLoadingScreen : setLoading
-    }
-
     return (
 
         <Provider store={store}>
-            <BlogContext.Provider value={value}>
-                <Navigation />
-            </BlogContext.Provider>
-            <Modal visible={loading}>
-                
-            </Modal>
+            <Navigation />
+            <LoadingModal message="Please Wait..." />
         </Provider>
     )
 }

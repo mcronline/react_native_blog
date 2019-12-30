@@ -6,9 +6,11 @@ import {
     DELETE_ARTICLE,
     FETCH_ARTICLES,
     FETCH_ARTICLE,
-    ERROR
+    ERROR,
+    LOADING_SCREEN
 } from '../actions/types';
 import AlertError from '../components/AlertError';
+import _ from 'lodash';
 
 const blogReducer = (state=[], action) => {
     
@@ -16,6 +18,19 @@ const blogReducer = (state=[], action) => {
 
         case FETCH_ARTICLES:
             return action.payload;
+
+        case FETCH_ARTICLE:
+            //state.forEach(item => item.id === action.payload.id ? state : 
+            if(!state)
+                return action.data;
+            else{
+                return state.map((article) => {
+                    if(article.id === action.payload.id)
+                        return action.payload;
+                    else
+                        return article;
+                });
+            }
 
         case ADD_ARTICLE:
             return [...state, action.payload];
@@ -39,6 +54,19 @@ const blogReducer = (state=[], action) => {
     }
 }
 
+const loadingScreenReducer = (state = false, action) => {
+
+    switch(action.type){
+
+        case LOADING_SCREEN:
+            return action.payload;
+
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
-    blog : blogReducer
+    blog : blogReducer,
+    loadingScreen : loadingScreenReducer
 });
