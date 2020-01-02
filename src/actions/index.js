@@ -27,7 +27,7 @@ export const fetchArticles = () => async dispatch => {
             payload : response.data
         });
     }catch(err){
-        dispatchError();
+        dispatchError(err.message);
     }
 }
 
@@ -42,11 +42,7 @@ export const addArticle = (data, callback) => async dispatch => {
             payload : response.data
         });
     }catch(err){
-        dispatch(loadingScreen(false));
-        dispatch({
-            type : ERROR,
-            payload : err.message
-        });
+        dispatchError(err.message);
     }
 }
 
@@ -61,11 +57,7 @@ export const editArticle = (data, callback) => async dispatch => {
             payload : data
         });
     }catch(err){
-        dispatch(loadingScreen(false));
-        dispatch({
-            type : ERROR,
-            payload : err.message
-        });
+        dispatchError(err.message);
     }
 }
 
@@ -79,18 +71,14 @@ export const deleteArticle = (id, callback) => async dispatch => {
             payload : id
         })
     }catch(err){
-        dispatch(loadingScreen(false));
-        dispatch({
-            type : ERROR,
-            payload : err.message
-        });
+        dispatchError(err.message);
     }
 }
 
-const dispatchError = () => {
+const dispatchError = (message) => {
     dispatch(loadingScreen(false));
     dispatch({
         type : ERROR,
-        payload : err.message
+        payload : message
     });
 }
