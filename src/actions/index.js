@@ -27,7 +27,7 @@ export const fetchArticles = () => async dispatch => {
             payload : response.data
         });
     }catch(err){
-        dispatchError(err.message);
+        dispatchError(err.message, dispatch);
     }
 }
 
@@ -42,13 +42,15 @@ export const addArticle = (data, callback) => async dispatch => {
             payload : response.data
         });
     }catch(err){
-        dispatchError(err.message);
+        dispatchError(err.message, dispatch);
     }
 }
 
-export const editArticle = (data, callback) => async dispatch => {
+export const editArticle = (id, data, callback) => async dispatch => {
     dispatch(loadingScreen(true));
     try{
+        console.log(id);
+        console.log(data);
         const response = await jsonServer.put(`/blogposts/${id}`,{...data});
         dispatch(loadingScreen(false));
         callback();
@@ -57,7 +59,7 @@ export const editArticle = (data, callback) => async dispatch => {
             payload : data
         });
     }catch(err){
-        dispatchError(err.message);
+        dispatchError(err.message, dispatch);
     }
 }
 
@@ -71,11 +73,11 @@ export const deleteArticle = (id, callback) => async dispatch => {
             payload : id
         })
     }catch(err){
-        dispatchError(err.message);
+        dispatchError(err.message, dispatch);
     }
 }
 
-const dispatchError = (message) => {
+const dispatchError = (message, dispatch) => {
     dispatch(loadingScreen(false));
     dispatch({
         type : ERROR,
