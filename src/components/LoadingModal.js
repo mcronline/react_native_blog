@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { View, Text, Modal, ActivityIndicator, StyleSheet} from 'react-native';
-import Loader from '../../assets/img/loaders/tail-spin.svg';
 
 const LoadingModal = ({ message }) => {
 
